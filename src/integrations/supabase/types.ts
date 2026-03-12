@@ -14,7 +14,132 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      health_vitals: {
+        Row: {
+          blood_oxygen: number | null
+          blood_pressure_diastolic: number | null
+          blood_pressure_systolic: number | null
+          created_at: string
+          heart_rate: number | null
+          id: string
+          recorded_at: string
+          sleep_score: number | null
+          steps: number | null
+          stress_level: number | null
+          temperature: number | null
+          user_id: string
+        }
+        Insert: {
+          blood_oxygen?: number | null
+          blood_pressure_diastolic?: number | null
+          blood_pressure_systolic?: number | null
+          created_at?: string
+          heart_rate?: number | null
+          id?: string
+          recorded_at?: string
+          sleep_score?: number | null
+          steps?: number | null
+          stress_level?: number | null
+          temperature?: number | null
+          user_id: string
+        }
+        Update: {
+          blood_oxygen?: number | null
+          blood_pressure_diastolic?: number | null
+          blood_pressure_systolic?: number | null
+          created_at?: string
+          heart_rate?: number | null
+          id?: string
+          recorded_at?: string
+          sleep_score?: number | null
+          steps?: number | null
+          stress_level?: number | null
+          temperature?: number | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          allergies: string[] | null
+          avatar_url: string | null
+          blood_type: string | null
+          created_at: string
+          date_of_birth: string | null
+          emergency_contact_name: string | null
+          emergency_contact_phone: string | null
+          full_name: string | null
+          height_cm: number | null
+          id: string
+          medical_conditions: string[] | null
+          updated_at: string
+          user_id: string
+          weight_kg: number | null
+        }
+        Insert: {
+          allergies?: string[] | null
+          avatar_url?: string | null
+          blood_type?: string | null
+          created_at?: string
+          date_of_birth?: string | null
+          emergency_contact_name?: string | null
+          emergency_contact_phone?: string | null
+          full_name?: string | null
+          height_cm?: number | null
+          id?: string
+          medical_conditions?: string[] | null
+          updated_at?: string
+          user_id: string
+          weight_kg?: number | null
+        }
+        Update: {
+          allergies?: string[] | null
+          avatar_url?: string | null
+          blood_type?: string | null
+          created_at?: string
+          date_of_birth?: string | null
+          emergency_contact_name?: string | null
+          emergency_contact_phone?: string | null
+          full_name?: string | null
+          height_cm?: number | null
+          id?: string
+          medical_conditions?: string[] | null
+          updated_at?: string
+          user_id?: string
+          weight_kg?: number | null
+        }
+        Relationships: []
+      }
+      symptom_conversations: {
+        Row: {
+          created_at: string
+          diagnosis_summary: string | null
+          id: string
+          messages: Json
+          risk_score: number | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          diagnosis_summary?: string | null
+          id?: string
+          messages?: Json
+          risk_score?: number | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          diagnosis_summary?: string | null
+          id?: string
+          messages?: Json
+          risk_score?: number | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
