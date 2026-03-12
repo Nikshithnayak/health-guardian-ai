@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 const data = [
   { day: "Mon", hr: 72, steps: 8500 },
   { day: "Tue", hr: 75, steps: 6200 },
@@ -12,7 +14,12 @@ const maxSteps = Math.max(...data.map((d) => d.steps));
 
 const ActivityChart = () => {
   return (
-    <div className="glass-card rounded-xl p-5">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.3 }}
+      className="glass-card rounded-xl p-5"
+    >
       <div className="flex items-center justify-between mb-5">
         <div>
           <h3 className="text-sm font-semibold text-foreground">Weekly Activity</h3>
@@ -29,23 +36,43 @@ const ActivityChart = () => {
       </div>
 
       <div className="flex items-end gap-3 h-40">
-        {data.map((d) => (
-          <div key={d.day} className="flex-1 flex flex-col items-center gap-2">
-            <span className="text-xs font-mono text-primary">{d.hr}</span>
-            <div className="w-full bg-secondary/50 rounded-t-md relative overflow-hidden" style={{ height: `${(d.steps / maxSteps) * 100}%` }}>
-              <div className="absolute inset-0 bg-primary/30 rounded-t-md" />
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary" />
+        {data.map((d, i) => {
+          const heightPercent = (d.steps / maxSteps) * 100;
+          return (
+            <div key={d.day} className="flex-1 flex flex-col items-center gap-2">
+              <motion.span
+                className="text-xs font-mono text-primary"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 + i * 0.1 }}
+              >
+                {d.hr}
+              </motion.span>
+              <motion.div
+                className="w-full bg-secondary/50 rounded-t-md relative overflow-hidden"
+                initial={{ height: 0 }}
+                animate={{ height: `${heightPercent}%` }}
+                transition={{ duration: 0.8, delay: 0.3 + i * 0.1, ease: "easeOut" }}
+              >
+                <div className="absolute inset-0 bg-primary/30 rounded-t-md" />
+                <motion.div
+                  className="absolute bottom-0 left-0 right-0 h-1 bg-primary"
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ delay: 1 + i * 0.1, duration: 0.3 }}
+                />
+              </motion.div>
+              <span className="text-xs text-muted-foreground">{d.day}</span>
             </div>
-            <span className="text-xs text-muted-foreground">{d.day}</span>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       <div className="mt-4 pt-3 border-t border-border flex justify-between text-xs text-muted-foreground">
         <span>Avg: <span className="text-foreground font-mono">8,529</span> steps/day</span>
         <span>Avg HR: <span className="text-foreground font-mono">71</span> bpm</span>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
