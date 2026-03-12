@@ -1,1 +1,7 @@
 project_id = "uleybegkholnzeakbtme"
+
+[functions.ai-symptom-scanner]
+verify_jwt = false
+
+[functions.ai-health-analysis]
+verify_jwt = false
