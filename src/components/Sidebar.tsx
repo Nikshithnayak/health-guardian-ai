@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { 
   Activity, Brain, Shield, Heart, MessageCircle, 
-  AlertTriangle, Pill, BarChart3, Settings, User, LogOut
+  AlertTriangle, Pill, BarChart3, Settings, User, LogOut, Clock
 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 
@@ -14,10 +14,12 @@ const navItems = [
   { id: "dashboard", icon: Activity, label: "Dashboard" },
   { id: "symptom", icon: Brain, label: "Symptom Scanner" },
   { id: "vitals", icon: Heart, label: "Vitals" },
+  { id: "history", icon: Clock, label: "Vitals History" },
   { id: "prediction", icon: BarChart3, label: "Risk Prediction" },
   { id: "emergency", icon: AlertTriangle, label: "Emergency" },
   { id: "mental", icon: MessageCircle, label: "Mental Health" },
   { id: "medicine", icon: Pill, label: "Medications" },
+  { id: "profile", icon: Settings, label: "Profile" },
 ];
 
 const Sidebar = ({ activeTab, onTabChange }: SidebarProps) => {
