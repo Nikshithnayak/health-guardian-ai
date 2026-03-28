@@ -10,6 +10,8 @@ import HealthTwin from "@/components/HealthTwin";
 import ActivityChart from "@/components/ActivityChart";
 import MentalHealthChat from "@/components/MentalHealthChat";
 import MedicationTracker from "@/components/MedicationTracker";
+import VitalsHistory from "@/components/VitalsHistory";
+import Profile from "@/pages/Profile";
 
 const pageVariants = {
   initial: { opacity: 0, y: 15 },
@@ -94,6 +96,18 @@ const MedicinePage = () => (
   </motion.div>
 );
 
+const VitalsHistoryPage = () => (
+  <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.3 }}>
+    <VitalsHistory />
+  </motion.div>
+);
+
+const ProfilePage = () => (
+  <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.3 }}>
+    <Profile />
+  </motion.div>
+);
+
 const tabComponents: Record<string, React.FC> = {
   dashboard: Dashboard,
   symptom: SymptomPage,
@@ -102,6 +116,8 @@ const tabComponents: Record<string, React.FC> = {
   emergency: EmergencyPage,
   mental: MentalPage,
   medicine: MedicinePage,
+  history: VitalsHistoryPage,
+  profile: ProfilePage,
 };
 
 const tabTitles: Record<string, string> = {
@@ -112,6 +128,8 @@ const tabTitles: Record<string, string> = {
   emergency: "Emergency Response",
   mental: "Mental Wellness",
   medicine: "Medications",
+  history: "Vitals History",
+  profile: "Profile Settings",
 };
 
 const Index = () => {
